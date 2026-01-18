@@ -1,0 +1,44 @@
+const ROOT_URL =
+  process.env.NEXT_PUBLIC_URL ||
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
+
+/**
+ * MiniApp configuration object. Must follow the Farcaster MiniApp specification.
+ *
+ * @see {@link https://miniapps.farcaster.xyz/docs/guides/publishing}
+ */
+export const minikitConfig = {
+  accountAssociation: {
+    header:
+      "eyJmaWQiOjk5OTg4MywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDc2NzQ1RTAwNThGNjE2ZjU0ZEEwZDMwMjlmYTU3NmEyMTdBMDFFQzMifQ",
+    payload: "eyJkb21haW4iOiJvbmVwdWxzZS5uaXJ3YW5hLmxvbCJ9",
+    signature:
+      "FdcE+r8+9eo2qe5wa0nQP0sFjbJY5sZn0z75hqNPLpJiBZjwzC8d25rxockEnGOEMjxE0uXBKz4uGtAairCaqhs=",
+  },
+  miniapp: {
+    version: "1",
+    name: "PulseChain",
+    subtitle: "Say GM, earn rewards",
+    description: "Build streaks and get rewarded",
+    screenshotUrls: [`${ROOT_URL}/screenshot.png`],
+    iconUrl: `${ROOT_URL}/icon-dark.png`,
+    splashImageUrl: `${ROOT_URL}/splash.png`,
+    splashBackgroundColor: "#FFFFFF",
+    homeUrl: ROOT_URL,
+    webhookUrl: `${ROOT_URL}/api/webhook`,
+    primaryCategory: "social",
+    tags: ["daily", "gm", "habit", "rewards", "streaks"],
+    heroImageUrl: `${ROOT_URL}/hero.png`,
+    tagline: "Your daily onchain habit",
+    ogTitle: "PulseChain",
+    ogDescription: "Build streaks and get rewarded",
+    ogImageUrl: `${ROOT_URL}/hero.png`,
+    noindex: false,
+    canonicalDomain: "pulse-chain.nirwana.lol",
+  },
+  baseBuilder: {
+    ownerAddress: "0x0e2d4eF0a0A82cd818f0B3cfFe52F4Ebcbf0d96e",
+  },
+} as const;
